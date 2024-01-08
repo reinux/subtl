@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Test Language",
+  "patterns": [
+    { "name": "string.quoted.tl",
+      "match": "^[^:]*:"
+    },
+    {
+      "begin": "({\\\\b[1-9]\\d*})",
+      "end": "$|({\\\\b0})",
+      "captures": {
+        "1": { "name": "entity.name.tag.tl" }
+      },
+      "contentName": "markup.bold.tl"
+    },
+    {
+      "begin": "({\\\\i1})",
+      "end": "$|({\\\\i0})",
+      "captures": {
+        "1": { "name": "entity.name.tag.tl" }
+      },
+      "contentName": "markup.italic.tl"
+    },
+    { "match": "\\\\n",
+      "name": "keyword.control.tl"
+    },
+    { "match": "\\\\N",
+      "name": "keyword.control.tl"
+    },
+    { "match": "\\\\h",
+      "name": "keyword.control.tl"
+    },
+    { "name": "entity.name.tag.tl",
+      "match": "{\\\\[^}]*}"
+    },
+    { "name": "comment.block.tl",
+      "match": "{[^\\\\][^}]*}"
+    }
+  ],
+	"scopeName": "text.subtl"
+}
